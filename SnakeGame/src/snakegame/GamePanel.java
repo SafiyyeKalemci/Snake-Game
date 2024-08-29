@@ -26,11 +26,11 @@ public class GamePanel extends JPanel implements ActionListener {
     //Coordinates of snakes's body
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
-    int bodyParts = 1;
-    int applesEaten = 0;
+    int bodyParts;
+    int applesEaten;
     int appleX;
     int appleY;
-    char direction = 'R';  //Snake begin by going right
+    char direction;  
     boolean running = false;
     Timer timer;
     Random random;
@@ -59,7 +59,7 @@ public class GamePanel extends JPanel implements ActionListener {
     public void resetGame() {
         bodyParts = 1;
         applesEaten = 0;
-        direction = 'R';
+        direction = 'R';  //Snake begin by going right
         for (int i = 0; i < GAME_UNITS; i++) {
             x[i] = 2 * UNIT_SIZE;
             y[i] = SCREEN_HEIGHT / 2;
@@ -101,7 +101,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 g.fill3DRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE, true);
             }
         }
-        g.setColor(Color.red);
+        g.setColor(Color.white);
         g.setFont(new Font("Ink Free", Font.BOLD, 40));
         FontMetrics metrics = getFontMetrics(g.getFont());
         g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score: " + applesEaten)) / 2, g.getFont().getSize());
@@ -191,7 +191,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     public void gameOver(Graphics g) {
         //Score
-        g.setColor(Color.red);
+        g.setColor(Color.white);
         g.setFont(new Font("Ink Free", Font.BOLD, 40));
         FontMetrics metrics1 = getFontMetrics(g.getFont());
         g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics1.stringWidth("Score: " + applesEaten)) / 2, g.getFont().getSize());
